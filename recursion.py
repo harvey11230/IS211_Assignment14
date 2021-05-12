@@ -32,17 +32,34 @@ def PartII():
         else:
             print(gcd(a, b))
 
-def String_Comparison(s1, s2):
-    if s1 == s2:
+result = []
+def recur_string(s1, s2):
+
+    len_string1 = len(s1)
+    len_string2 = len(s2)
+
+
+    if len_string1 == 0 or len_string2 == 0:
         return 0
+    if s1[0] == s2[0]:
+        result.append(0)
+        return recur_string(s1[1:], s2[1:])
+    if s1[0] < s2[0]:
+        result.append(-1)
+        return recur_string(s1[1:], s2[1:])
+    if s1[0] > s2[0]:
+        result.append(1)
+        return recur_string(s1[1:], s2[1:])
+
+
 
 
 def PartIII():
 
         s1 = input("string1\n")
         s2 = input("string2\n")
-        String_Comparison(s1, s2)
-
+        recur_string(s1, s2)
+        print(result)
 
 if __name__ == '__main__':
 
